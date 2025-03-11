@@ -1,0 +1,20 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier for a ArchiMon
+  name:
+    type: string
+    description: The name of the ArchiMon
+  pv:
+    type: integer
+    description: The pv of the ArchiMon
+  attaque:
+    type: integer
+    description: The attaque of the ArchiMon
+  defense:
+    type: integer
+    description: The defense of the ArchiMon
+  vitesse:
+    type: integer
+    description: The vitesse of the ArchiMon
