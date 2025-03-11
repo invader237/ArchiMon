@@ -9,5 +9,5 @@ info:
 
 paths:
   /archimon:
-    $ref: '.archimon/archimon.yml'
+    $ref: 'archimon/archimon.yml'
 
