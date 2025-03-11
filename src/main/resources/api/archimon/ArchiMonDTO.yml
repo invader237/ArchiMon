@@ -3,7 +3,7 @@ properties:
   id:
     type: integer
     description: The unique identifier for a ArchiMon
-  name:
+  nom:
     type: string
     description: The name of the ArchiMon
   pv:

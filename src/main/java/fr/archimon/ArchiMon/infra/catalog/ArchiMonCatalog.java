@@ -7,4 +7,5 @@ import java.util.List;
 @Service
 public interface ArchiMonCatalog {
     List<ArchiMon> getAll();
+    ArchiMon create(ArchiMon archiMon);
 }

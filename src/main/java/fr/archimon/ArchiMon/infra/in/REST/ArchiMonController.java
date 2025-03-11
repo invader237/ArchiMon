@@ -2,6 +2,7 @@ package fr.archimon.ArchiMon.infra.in.REST;
 
 import fr.archimon.ArchiMon.api.ArchimonApi;
 import fr.archimon.ArchiMon.domain.mapper.ArchimonToArchimonDTOMapper;
+import fr.archimon.ArchiMon.domain.mapper.ArchimonDTOToArchimonMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,9 +17,13 @@ public class ArchiMonController implements ArchimonApi {
 
     private final ArchiMonCatalog archiMonCatalog;
     private final ArchimonToArchimonDTOMapper archimonToArchimonDTOMapper;
+    private final ArchimonDTOToArchimonMapper archimonDTOToArchimonMapper;
 
-    @GetMapping
     public List<ArchiMonDTO> getAll(){
         return archiMonCatalog.getAll().stream().map(archimonToArchimonDTOMapper::apply).collect(Collectors.toList());
+    }
+
+    public ArchiMonDTO create(ArchiMonDTO archiMonDTO){
+        return archimonToArchimonDTOMapper.apply(archiMonCatalog.create(archimonDTOToArchimonMapper.apply(archiMonDTO)));
     }
 }

@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ArchiMonRepository extends JpaRepository<ArchiMon, Long> {
     List<ArchiMon> findAll();
+    ArchiMon save(ArchiMon archiMon);
 }
 

@@ -16,5 +16,10 @@ public class ArchiMonHibernateAdapter implements ArchiMonCatalog {
     public List<ArchiMon> getAll() {
         return archiMonRepository.findAll();
     }
+
+    @Override
+    public ArchiMon create(ArchiMon archiMon) {
+        return archiMonRepository.save(archiMon);
+    }
         
 }

@@ -13,3 +13,22 @@ get:
             items:
               $ref: './ArchiMonDTO.yml'
 
+post:
+  tags:
+    - archimon
+  summary: Create a new ArchiMon
+  operationId: create
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: './ArchiMonDTO.yml'
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: './ArchiMonDTO.yml'
+
