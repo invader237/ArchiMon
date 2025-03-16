@@ -23,7 +23,9 @@ public class ArchiMonController implements ArchimonApi {
         return archiMonCatalog.getAll().stream().map(archimonToArchimonDTOMapper::apply).collect(Collectors.toList());
     }
 
-    public ArchiMonDTO create(ArchiMonDTO archiMonDTO){
-        return archimonToArchimonDTOMapper.apply(archiMonCatalog.create(archimonDTOToArchimonMapper.apply(archiMonDTO)));
+    public ArchiMonDTO create(ArchiMonDTO archiMonDTO) {
+        return archimonToArchimonDTOMapper.apply(
+            archiMonCatalog.create(archimonDTOToArchimonMapper.apply(archiMonDTO))
+        );
     }
 }

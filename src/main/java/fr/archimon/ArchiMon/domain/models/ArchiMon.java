@@ -3,7 +3,6 @@ package fr.archimon.ArchiMon.domain.models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
 
 @Entity
 @Table(name = "archimon")
@@ -31,4 +30,6 @@ public class ArchiMon {
     @Column(name = "vitesse")
     private int vitesse;
 
+    @Column(name = "image_url")
+    private String imageUrl;
 }
