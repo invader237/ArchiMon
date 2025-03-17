@@ -6,18 +6,33 @@ properties:
   nom:
     type: string
     description: The name of the ArchiMon
-  pv:
+  description:
+    type: string
+    description: The description of the ArchiMon
+  id_type1:
+    type: string
+    description: The identifier of the first type of the ArchiMon
+  id_type2:
+    type: string
+    description: The identifier of the second type of the ArchiMon
+  hp:
     type: integer
-    description: The pv of the ArchiMon
-  attaque:
+    description: The hp of the ArchiMon
+  atk:
     type: integer
-    description: The attaque of the ArchiMon
-  defense:
+    description: The attack of the ArchiMon
+  sp_atk:
+    type: integer
+    description: The special attack of the ArchiMon
+  def:
     type: integer
     description: The defense of the ArchiMon
-  vitesse:
+  sp_def:
     type: integer
-    description: The vitesse of the ArchiMon
+    description: The special defense of the ArchiMon
+  spd:
+    type: integer
+    description: The speed of the ArchiMon
   image_url:
     type: string
     description: The image_url of the ArchiMon
