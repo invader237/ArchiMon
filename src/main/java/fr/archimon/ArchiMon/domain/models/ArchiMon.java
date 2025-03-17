@@ -27,23 +27,23 @@ public class ArchiMon {
     @Column(name = "id_type2")
     private int id_type2;
 
-    @Column(name = "pv")
-    private int pv;
+    @Column(name = "hp")
+    private int hp;
 
-    @Column(name = "attaque")
+    @Column(name = "atk")
     private int atk;
 
-    @Column(name = "sp_attaque")
+    @Column(name = "sp_atk")
     private int sp_atk;
 
-    @Column(name = "defense")
+    @Column(name = "def")
     private int def;
 
-    @Column(name = "sp_defense")
+    @Column(name = "sp_def")
     private int sp_def;
 
-    @Column(name = "vitesse")
-    private int vitesse;
+    @Column(name = "spd")
+    private int spd;
 
     @Column(name = "image_url")
     private String imageUrl;
