@@ -1,6 +1,6 @@
 type: object
 properties:
-  id:
+  id_archimon:
     type: integer
     description: The unique identifier for a ArchiMon
   nom:
@@ -15,7 +15,7 @@ properties:
   id_type2:
     type: string
     description: The identifier of the second type of the ArchiMon
-  hp:
+  pv:
     type: integer
     description: The hp of the ArchiMon
   atk:
@@ -33,6 +33,6 @@ properties:
   spd:
     type: integer
     description: The speed of the ArchiMon
-  image_url:
+  url_image:
     type: string
     description: The image_url of the ArchiMon

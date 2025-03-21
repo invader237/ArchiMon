@@ -13,13 +13,14 @@ import fr.archimon.ArchiMon.model.ArchiMonDTO;
 
 @RestController
 @RequiredArgsConstructor
-public class ArchiMonController implements ArchimonApi {
+public class ArchiMonController implements ArchimonApi{
 
     private final ArchiMonCatalog archiMonCatalog;
     private final ArchimonToArchimonDTOMapper archimonToArchimonDTOMapper;
     private final ArchimonDTOToArchimonMapper archimonDTOToArchimonMapper;
 
     public List<ArchiMonDTO> getAll(){
+        System.out.println("getAll");
         return archiMonCatalog.getAll().stream().map(archimonToArchimonDTOMapper::apply).collect(Collectors.toList());
     }
 
