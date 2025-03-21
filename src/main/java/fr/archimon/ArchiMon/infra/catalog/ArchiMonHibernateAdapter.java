@@ -22,17 +22,17 @@ public class ArchiMonHibernateAdapter implements ArchiMonCatalog {
     @Override
     public ArchiMon create(ArchiMon archiMon) {
         String imageUrl = imageGenerationService.generateImageUrl(
-            archiMon.getNom(),
-            archiMon.getAttaque(),
-            archiMon.getDefense(),
-            archiMon.getVitesse(),
-            "a mysterious and powerful creature",
-            "sharp claws, glowing eyes, ethereal aura"
+                archiMon.getNom(),
+                archiMon.getAtk(),
+                archiMon.getDef(),
+                archiMon.getSpd(),
+                "a mysterious and powerful creature",
+                "sharp claws, glowing eyes, ethereal aura"
         );
 
         archiMon.setImageUrl(imageUrl);
         archiMonRepository.save(archiMon);
         return archiMon;
     }
-        
+
 }

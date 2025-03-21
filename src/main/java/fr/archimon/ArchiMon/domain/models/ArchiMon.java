@@ -12,8 +12,8 @@ public class ArchiMon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "id_archimon")
+    private int id_archimon;
 
     @Column(name = "nom")
     private String nom;
@@ -21,14 +21,17 @@ public class ArchiMon {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "url_image")
+    private String imageUrl;
+
     @Column(name = "id_type1")
     private int id_type1;
 
     @Column(name = "id_type2")
     private int id_type2;
 
-    @Column(name = "hp")
-    private int hp;
+    @Column(name = "pv")
+    private int pv;
 
     @Column(name = "atk")
     private int atk;
@@ -44,7 +47,4 @@ public class ArchiMon {
 
     @Column(name = "spd")
     private int spd;
-
-    @Column(name = "image_url")
-    private String imageUrl;
 }
