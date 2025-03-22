@@ -1,0 +1,36 @@
+get:
+  tags:
+    - team
+  summary: Get One Team
+  operationId: getById
+  parameters:
+      - name: id
+        in: path
+        description: The id of the team to retrieve
+        required: true
+        schema:
+            type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './teamDTO.yml'
+
+
+delete:
+    tags:
+        - team
+    summary: Delete a team
+    operationId: delete
+    parameters:
+        - name: id
+          in: path
+          description: The id of the team to delete
+          required: true
+          schema:
+              type: integer
+    responses:
+        '204':
+          description: No content

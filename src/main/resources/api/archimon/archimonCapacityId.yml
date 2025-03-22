@@ -1,0 +1,21 @@
+delete:
+  tags:
+    - archimon
+  summary: Delete a Capacity from an ArchiMon
+  operationId: deleteCapacityFromArchiMon
+  parameters:
+      - name: id
+        in: path
+        description: The id of the ArchiMon
+        required: true
+        schema:
+            type: integer
+      - name: capacityId
+        in: path
+        description: The id of the Capacity
+        required: true
+        schema:
+            type: integer
+  responses:
+    '204':
+      description: No Content

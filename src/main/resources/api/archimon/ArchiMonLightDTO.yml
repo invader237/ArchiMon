@@ -1,8 +1,5 @@
 type: object
 properties:
-  id:
-    type: integer
-    description: The unique identifier for a ArchiMon
   nom:
     type: string
     description: The name of the ArchiMon
@@ -12,7 +9,7 @@ properties:
   types:
     type: array
     items:
-      $ref: '../types/typesDTO.yml'
+      type: integer
   pv:
     type: integer
     description: The hp of the ArchiMon

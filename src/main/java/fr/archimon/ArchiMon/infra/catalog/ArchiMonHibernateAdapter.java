@@ -29,10 +29,24 @@ public class ArchiMonHibernateAdapter implements ArchiMonCatalog {
                 "a mysterious and powerful creature",
                 "sharp claws, glowing eyes, ethereal aura"
         );
-
-        archiMon.setImageUrl(imageUrl);
+        archiMon.setUrlImage(imageUrl);
         archiMonRepository.save(archiMon);
         return archiMon;
+    }
+
+    @Override
+    public ArchiMon getById(Integer id) {
+        return archiMonRepository.getReferenceById(Long.valueOf(id));
+    }
+
+    @Override
+    public ArchiMon save(ArchiMon archiMon) {
+        return archiMonRepository.save(archiMon);
+    }
+
+    @Override
+    public List<ArchiMon> findAllByIdIn(List<Integer> ids) {
+        return archiMonRepository.findAllByIdIn(ids);
     }
 
 }

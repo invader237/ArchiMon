@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier for a team
+  nom:
+    type: string
+    description: The name of the team
+  archimons:
+    type: array
+    items:
+      $ref: '../archimon/ArchiMonDTO.yml'

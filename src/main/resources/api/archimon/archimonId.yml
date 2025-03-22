@@ -1,0 +1,19 @@
+get:
+  tags:
+    - archimon
+  summary: Get archimon by id
+  operationId: getById
+  parameters:
+      - name: id
+        in: path
+        description: The id of the ArchiMon
+        required: true
+        schema:
+            type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: './ArchiMonFullDTO.yml'

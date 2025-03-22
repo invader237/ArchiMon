@@ -1,0 +1,34 @@
+get:
+  tags:
+    - team
+  summary: Get all teams
+  operationId: getAll
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './teamDTO.yml'
+
+post:
+    tags:
+        - team
+    summary: Create a team
+    operationId: create
+    requestBody:
+        description: Team to create
+        required: true
+        content:
+          application/json:
+              schema:
+                $ref: './teamPostDTO.yml'
+    responses:
+        '201':
+          description: Created
+          content:
+              application/json:
+                schema:
+                    $ref: './teamDTO.yml'

@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier for a Capacity
+  nom:
+    type: string
+    description: The name of the Capacity
+  description:
+    type: string
+    description: The description of the Capacity
+  puissance:
+    type: number
+    description: The power of the Capacity
+  precision:
+      type: number
+      description: The precision of the Capacity
+  type:
+    $ref: '../types/typesDTO.yml'
+    description: The type of the Capacity
+  effetSecondaire:
+    type: string
+    description: The secondary effect of the Capacity
+  categorie:
+    type: string
+    description: The category of the Capacity
