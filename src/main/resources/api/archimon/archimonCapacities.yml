@@ -1,0 +1,45 @@
+get:
+  tags:
+    - archimon
+  summary: Get all Capacities of an ArchiMon
+  operationId: getCapacitiesForArchiMon
+  parameters:
+      - name: id
+        in: path
+        description: The id of the ArchiMon
+        required: true
+        schema:
+            type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../capacities/CapacityDTO.yml'
+
+
+post:
+  tags:
+    - archimon
+  summary: Add capacities to an ArchiMon
+  operationId: addCapacitiesToArchiMon
+  parameters:
+      - name: id
+        in: path
+        description: The id of the ArchiMon
+        required: true
+        schema:
+            type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../capacities/CapacityPostDTO.yml'
+
+  responses:
+    '201':
+      description: Created

@@ -1,0 +1,14 @@
+get:
+  tags:
+    - capacities
+  summary: Get all Capacities
+  operationId: getAll
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './CapacityDTO.yml'

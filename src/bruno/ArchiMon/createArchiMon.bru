@@ -1,0 +1,28 @@
+meta {
+  name: createArchiMon
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/archimon
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nom" : "salut",
+    "description" : "desxci",
+    "types" : [
+      1,2
+    ],
+    "pv" : 5,
+    "atk" : 5,
+    "spAtk" : 5,
+    "def" : 5,
+    "spDef" : 5,
+    "spd" : 10,
+    "urlImage" : "salut"
+  }
+}

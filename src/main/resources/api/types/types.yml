@@ -1,0 +1,14 @@
+get:
+  tags:
+    - types
+  summary: Get all Types
+  operationId: getAll
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: './typesDTO.yml'

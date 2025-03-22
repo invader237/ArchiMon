@@ -10,4 +10,17 @@ info:
 paths:
   /archimon:
     $ref: 'archimon/archimon.yml'
-
+  /archimon/{id}:
+    $ref: 'archimon/archimonId.yml'
+  /archimon/{id}/capacities:
+    $ref: 'archimon/archimonCapacities.yml'
+  /archimon/{id}/capacities/{capacityId}:
+    $ref: 'archimon/archimonCapacityId.yml'
+  /types:
+    $ref: 'types/types.yml'
+  /capacities:
+    $ref: 'capacities/capacities.yml'
+  /teams:
+    $ref: 'teams/teams.yml'
+  /teams/{id}:
+    $ref: 'teams/teamId.yml'

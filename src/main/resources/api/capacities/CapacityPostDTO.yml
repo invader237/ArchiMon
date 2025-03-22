@@ -1,0 +1,6 @@
+type: object
+properties:
+  capacities:
+    type: array
+    items:
+      type: integer

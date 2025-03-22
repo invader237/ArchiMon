@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier for a type of ArchiMon
+  libelle:
+    type: string
+    description: The name of the type of ArchiMon
+  image:
+    type: string
+    description: The image of the type
