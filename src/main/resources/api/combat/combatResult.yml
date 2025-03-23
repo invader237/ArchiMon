@@ -1,0 +1,14 @@
+type: object
+properties:
+  state:
+    type: string
+    enum: [ "SUCCESS", "FAILURE" ]
+  damage:
+    type: number
+    description: The damage done by the Capacity
+  restLife:
+    type: number
+    description: The remaining life of the Archimon
+  restLifeEnemy:
+    type: number
+    description: The remaining life of the enemy Archimon

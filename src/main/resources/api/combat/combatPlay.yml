@@ -1,0 +1,27 @@
+post:
+    tags:
+      - combat
+    summary: Play a Combat
+    operationId: play
+    parameters:
+        - name: id
+          in: path
+          description: The id of the combat to retrieve
+          required: true
+          schema:
+              type: integer
+
+    requestBody:
+      description: Combat to play
+      required: true
+      content:
+        application/json:
+            schema:
+              $ref: './combatPlayDTO.yml'
+    responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './combatResult.yml'

@@ -1,0 +1,18 @@
+meta {
+  name: createCombat
+  type: http
+  seq: 14
+}
+
+post {
+  url: http://localhost:8080/combat
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "idFirstTeam" : 1,
+    "idSecondTeam" : 3
+  }
+}

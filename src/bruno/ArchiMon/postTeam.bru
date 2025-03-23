@@ -4,8 +4,17 @@ meta {
   seq: 12
 }
 
-get {
+post {
   url: http://localhost:8080/teams
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "nom" : "Equipe du turfu",
+    "archimons" : [
+      7,8
+    ]
+  }
 }

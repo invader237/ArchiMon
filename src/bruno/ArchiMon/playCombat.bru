@@ -1,0 +1,20 @@
+meta {
+  name: playCombat
+  type: http
+  seq: 18
+}
+
+post {
+  url: http://localhost:8080/combat/3/play
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "teamId" : 3,
+    "archimonId" : 1,
+    "archimonEnemyId" : 6,
+    "capacityId" : 1
+  }
+}

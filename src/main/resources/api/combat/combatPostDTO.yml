@@ -1,0 +1,9 @@
+type: object
+properties:
+  idFirstTeam:
+    type: integer
+    description: The unique identifier for the first team
+
+  idSecondTeam:
+    type: integer
+    description: The unique identifier for the second team

@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: The unique identifier for a combat
+  firstTeam:
+    $ref: '../teams/teamDTO.yml'
+    description: The first team of the combat
+  secondTeam:
+    $ref: '../teams/teamDTO.yml'
+    description: The second team of the combat
+  status:
+    type: string
+    description: The status of the combat
+
+

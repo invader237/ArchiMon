@@ -76,4 +76,19 @@ public class ArchiMon {
         }
     }
 
+    public ArchiMon cloneForCombat() {
+        ArchiMon clone = new ArchiMon();
+        clone.setNom(this.nom);
+        clone.setDescription(this.description);
+        clone.setUrlImage(this.urlImage);
+        clone.setTypes(this.types);
+        clone.setPv(this.pv);
+        clone.setAtk(this.atk);
+        clone.setSpAtk(this.spAtk);
+        clone.setDef(this.def);
+        clone.setSpDef(this.spDef);
+        clone.setSpd(this.spd);
+        clone.setCapacity(this.capacities);
+        return clone;
+    }
 }
