@@ -1,0 +1,35 @@
+get:
+    tags:
+      - combat
+    summary: Get All Combats
+    operationId: getAll
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: './combatDTO.yml'
+
+
+post:
+  tags:
+    - combat
+  summary: Create a combat
+  operationId: create
+  requestBody:
+      description: Combat to create
+      required: true
+      content:
+        application/json:
+            schema:
+              $ref: './combatPostDTO.yml'
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: '../identifiable.yml'

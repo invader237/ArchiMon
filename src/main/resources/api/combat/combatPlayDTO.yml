@@ -1,0 +1,14 @@
+type: object
+properties:
+  teamId:
+    type: integer
+    description: The identifier of the team who plays
+  archimonId:
+    type: integer
+    description: The identifier of the Archimon who plays
+  archimonEnemyId:
+    type: integer
+    description: The identifier of the Archimon who is the enemy
+  capacityId:
+    type: integer
+    description: The identifier of the Capacity used by the Archimon

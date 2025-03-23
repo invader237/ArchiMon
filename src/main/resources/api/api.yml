@@ -24,3 +24,11 @@ paths:
     $ref: 'teams/teams.yml'
   /teams/{id}:
     $ref: 'teams/teamId.yml'
+  /combat:
+    $ref: 'combat/combat.yml'
+  /combat/{id}:
+    $ref: 'combat/combatId.yml'
+  /combat/{id}/whoStarts:
+    $ref: 'combat/combatWhoStarts.yml'
+  /combat/{id}/play:
+    $ref: 'combat/combatPlay.yml'

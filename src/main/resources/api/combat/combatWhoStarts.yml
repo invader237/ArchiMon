@@ -1,0 +1,22 @@
+get:
+    tags:
+      - combat
+    summary: Get Who Starts the Combat
+    operationId: getWhoStarts
+    parameters:
+        - name: id
+          in: path
+          description: The id of the combat to retrieve
+          required: true
+          schema:
+              type: integer
+
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+                type: integer
+                example: "1"
+                description: The id of the team that starts the combat
