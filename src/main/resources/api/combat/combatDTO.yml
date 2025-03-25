@@ -12,5 +12,10 @@ properties:
   status:
     type: string
     description: The status of the combat
-
+  winner:
+    type: integer
+    description: If the combat is finished, the winner of the combat
+  teamTurn:
+    type: integer
+    description: The id of the team that has to play
 
