@@ -1,6 +1,7 @@
 package fr.archimon.ArchiMon.infra.in.REST;
 
 import fr.archimon.ArchiMon.api.CombatApi;
+import fr.archimon.ArchiMon.domain.mapper.ArchimonToArchimonCombatMapper;
 import fr.archimon.ArchiMon.domain.mapper.CombatToCombatDTOMapper;
 import fr.archimon.ArchiMon.domain.mapper.IntToIdentifiableMapper;
 import fr.archimon.ArchiMon.domain.models.*;
@@ -25,6 +26,8 @@ public class CombatController implements CombatApi {
     private final ArchiMonCatalog archiMonCatalog;
     private final TypeMultiplicateurCatalog typeMultiplicateurCatalog;
     private final CapacityCatalog capacityCatalog;
+    private final ArchimonToArchimonCombatMapper archimonToArchimonCombatMapper;
+    private final ArchiMonCombatCatalog archiMonCombatCatalog;
 
     @Override
     public Identifiable create(CombatPostDTO combatPostDTO) {
@@ -63,52 +66,68 @@ public class CombatController implements CombatApi {
                 .mapToInt(ArchiMon::getSpd)
                 .sum();
 
+        int whoStarts = firstTeamSpeed > secondTeamSpeed ? combat.getFirstTeam().getId() : combat.getSecondTeam().getId();
+
+        combat.setTeamTurn(whoStarts);
         combatCatalog.save(combat);
 
-        return firstTeamSpeed > secondTeamSpeed
-                ? combat.getFirstTeam().getId()
-                : combat.getSecondTeam().getId();
+        return whoStarts;
     }
 
     @Override
     public CombatResult play(Integer id, CombatPlayDTO combatPlayDTO) {
         Combat combat = combatCatalog.getById(id);
+        int teamEnemy = combatPlayDTO.getTeamId() == combat.getFirstTeam().getId() ? combat.getSecondTeam().getId() : combat.getFirstTeam().getId();
+        int teamTurn = combat.getTeamTurn();
 
-        ArchiMon attacker = archiMonCatalog.getById(combatPlayDTO.getArchimonId()).cloneForCombat();
-        ArchiMon defender = archiMonCatalog.getById(combatPlayDTO.getArchimonEnemyId()).cloneForCombat();
+        if(combatPlayDTO.getTeamId() == teamTurn) {
+            ArchiMon attacker = archiMonCatalog.getById(combatPlayDTO.getArchimonId()).cloneForCombat();
+            ArchiMon defender = archiMonCatalog.getById(combatPlayDTO.getArchimonEnemyId()).cloneForCombat();
 
-        Capacity capacity = capacityCatalog.getById(combatPlayDTO.getCapacityId());
+            ArchiMonCombat archiMonCombat = archimonToArchimonCombatMapper.apply(attacker);
+            ArchiMonCombat archiMonCombatEnemy = archimonToArchimonCombatMapper.apply(defender);
 
-        CombatResult result = new CombatResult();
+            Capacity capacity = capacityCatalog.getById(combatPlayDTO.getCapacityId());
 
-        if (attaqueTouche(capacity.getPrecision())) {
-            result.setState(CombatResult.StateEnum.SUCCESS);
+            CombatResult result = new CombatResult();
 
-            TypeMultiplicateur multiplicateur = typeMultiplicateurCatalog
-                    .findByTypeDefensifAndTypeOffensif(
-                            attacker.getTypes().getFirst(),
-                            defender.getTypes().getFirst()
-                    );
+            if (attaqueTouche(capacity.getPrecision())) {
+                result.setState(CombatResult.StateEnum.SUCCESS);
 
-            double ratioAtkDef = (double) attacker.getAtk() / defender.getDef();
-            int degats = (int) (capacity.getPuissance() * ratioAtkDef * multiplicateur.getMultiplicateur());
+                TypeMultiplicateur multiplicateur = typeMultiplicateurCatalog
+                        .findByTypeDefensifAndTypeOffensif(
+                                attacker.getTypes().getFirst(),
+                                defender.getTypes().getFirst()
+                        );
 
-            int newPv = defender.getPv() - degats;
-            defender.setPv(Math.max(0, newPv));
+                double ratioAtkDef = (double) attacker.getAtk() / defender.getDef();
+                int degats = (int) (capacity.getPuissance() * ratioAtkDef * multiplicateur.getMultiplicateur());
 
-            if (newPv <= 0) {
-                combat.setStatus(StateCombat.NEXTTURN);
-                combatCatalog.save(combat);
+                int newPv = defender.getPv() - degats;
+                archiMonCombatEnemy.setPv(Math.max(0, newPv));
+
+                if (newPv <= 0) {
+                    combat.setStatus(StateCombat.NEXTTURN);
+                }
+
+                result.setDamage(BigDecimal.valueOf(degats));
+                result.setRestLife(BigDecimal.valueOf(attacker.getPv()));
+                result.setRestLifeEnemy(BigDecimal.valueOf(defender.getPv()));
+            } else {
+                result.setState(CombatResult.StateEnum.FAILURE);
             }
 
-            result.setDamage(BigDecimal.valueOf(degats));
-            result.setRestLife(BigDecimal.valueOf(attacker.getPv()));
-            result.setRestLifeEnemy(BigDecimal.valueOf(defender.getPv()));
-        } else {
-            result.setState(CombatResult.StateEnum.FAILURE);
+            archiMonCombatCatalog.save(archiMonCombatEnemy);
+            archiMonCombatCatalog.save(archiMonCombat);
+
+            combat.setTeamTurn(teamEnemy);
+            combatCatalog.save(combat);
+
+            return result;
         }
 
-        return result;
+        return null;
+
     }
 
     public static boolean attaqueTouche(double precision) {

@@ -36,4 +36,10 @@ public class Combat {
     @Column(name = "status")
     private StateCombat status = StateCombat.CREATED;
 
+    @Column(name = "winner")
+    private int winner;
+
+    @Column(name = "team_turn")
+    private int teamTurn;
+
 }
