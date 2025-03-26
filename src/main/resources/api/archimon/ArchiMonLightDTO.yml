@@ -10,6 +10,10 @@ properties:
     type: array
     items:
       type: integer
+  capacities:
+    type: array
+    items:
+      type: integer
   pv:
     type: integer
     description: The hp of the ArchiMon

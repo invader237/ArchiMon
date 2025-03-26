@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CapacityRepository extends JpaRepository<Capacity, Long> {
     List<Capacity> findAll();
+    List<Capacity> findAllByIdIn(List<Integer> capacitiesIds);
 }

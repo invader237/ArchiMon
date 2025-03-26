@@ -66,7 +66,10 @@ public class ArchiMonController implements ArchimonApi{
     public ArchiMonDTO create(ArchiMonLightDTO archiMonDTO) {
         ArchiMon archiMon = archimonLightDTOToArchimonMapper.apply(archiMonDTO);
         List<Integer> typesIds = archiMonDTO.getTypes();
-        List<Type>types  = typeCatalog.getAllByIds(typesIds);
+        List<Integer> capacitiesIds = archiMonDTO.getCapacities();
+        List<Type> types  = typeCatalog.getAllByIds(typesIds);
+        List<Capacity> capacities = capacityCatalog.getAllByIds(capacitiesIds);
+        archiMon.setCapacities(capacities);
         archiMon.setTypes(types);
         return archimonToArchimonDTOMapper.apply(archiMonCatalog.create(archiMon));
     }
