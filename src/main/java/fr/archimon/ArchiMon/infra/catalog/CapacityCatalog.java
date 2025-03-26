@@ -10,4 +10,5 @@ import java.util.List;
 public interface CapacityCatalog {
     List<Capacity> getAll();
     Capacity getById(Integer integer);
+    List<Capacity> getAllByIds(List<Integer> capacitiesIds);
 }

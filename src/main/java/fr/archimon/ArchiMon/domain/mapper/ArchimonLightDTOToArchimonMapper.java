@@ -13,5 +13,6 @@ public interface ArchimonLightDTOToArchimonMapper extends Function<ArchiMonLight
 
   @Override
   @Mapping(target = "types", ignore = true)
+  @Mapping(target = "capacities", ignore = true)
   ArchiMon apply(ArchiMonLightDTO archimon);
 }

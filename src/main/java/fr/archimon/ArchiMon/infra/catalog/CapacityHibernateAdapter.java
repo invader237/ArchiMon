@@ -23,4 +23,9 @@ public class CapacityHibernateAdapter implements CapacityCatalog {
     public Capacity getById(Integer id) {
         return capacityRepository.getReferenceById(Long.valueOf(id));
     }
+
+    @Override
+    public List<Capacity> getAllByIds(List<Integer> capacitiesIds) {
+        return capacityRepository.findAllByIdIn(capacitiesIds);
+    }
 }

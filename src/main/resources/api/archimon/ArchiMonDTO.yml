@@ -34,3 +34,7 @@ properties:
   urlImage:
     type: string
     description: The image_url of the ArchiMon
+  capacites:
+    type: array
+    items:
+      $ref: '../capacities/CapacityDTO.yml'
