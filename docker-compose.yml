@@ -1,22 +1,22 @@
 version: '3.8'
 
 services:
-#  backend:
-#    platform: linux/arm64
-#    build:
-#      context: ./
-#      dockerfile: Dockerfile
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - spring-network
-#    depends_on:
-#      - db
+  backend:
+    platform: linux/arm64
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-network
+    depends_on:
+      - db
 
   db:
     image: mariadb:10.5
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=archimon
     volumes:
       - db-data:/var/lib/mysql
@@ -31,8 +31,8 @@ services:
     image: phpmyadmin
     environment:
       - PMA_HOST=db
-      - PMA_USER=${DB_USERNAME}
-      - PMA_PASSWORD=${DB_PASSWORD}
+      - PMA_USER=root
+      - PMA_PASSWORD=root
     ports:
       - "8081:80"
     networks:
